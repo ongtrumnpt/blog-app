@@ -9,7 +9,6 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 
 
 @RestController
@@ -24,6 +23,11 @@ public class PostController {
     @PostMapping("/api/v1/posts")
     public PostDto create(@RequestBody PostCreateForm form){
         return postService.create(form);
+    }
+
+    @GetMapping("/api/v1/posts/{id}")
+    public PostDto findById(@PathVariable("id") Long id){
+        return postService.findById(id);
     }
 
     @PutMapping("/api/v1/posts/{id}")
