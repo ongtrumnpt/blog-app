@@ -38,7 +38,7 @@ public class Comment {
     private LocalDateTime updatedAt;
 
     @ManyToOne
-    @@JoinColumn(name = "post_id",
+    @JoinColumn(name = "post_id",
             referencedColumnName = "id",
             nullable = false
             )
