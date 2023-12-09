@@ -24,6 +24,12 @@ public class CommentServiceImpl implements CommentService {
         return commentRepository.findAll(pageable).map(CommentMapper::map);
     }
 
+    @Override
+    public Page<CommentDto> findByPostId(Long postId, Pageable pageable) {
+        return commentRepository.findByPostId(postId, pageable)
+                .map(CommentMapper::map);
+    }
+
     public CommentDto create(CommentCreateForm form, Long postId){
         var comment = CommentMapper.map(form);
         var post = postRepository.findById(postId).get();
@@ -48,4 +54,4 @@ public class CommentServiceImpl implements CommentService {
 
 }
 
-}
+

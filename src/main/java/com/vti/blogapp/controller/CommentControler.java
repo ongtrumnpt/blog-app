@@ -14,6 +14,11 @@ import org.springframework.web.bind.annotation.*;
 public class CommentControler {
     private final CommentService commentService;
 
+    @GetMapping("/api/v1/posts/{postId}/comments")
+    public Page<CommentDto> fingByPostId(@PathVariable("postId") Long posyId, Pageable pageable){
+        return commentService.findByPostId(posyId, pageable);
+    }
+
     @GetMapping("/api/v1/comments")
     public Page<CommentDto> findAll(Pageable pageable){
         return commentService.findAll(pageable);
